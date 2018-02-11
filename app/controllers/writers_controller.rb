@@ -1,5 +1,5 @@
 class WritersController < ApplicationController
   def index
-    @writers = Writer.pluck(:name).uniq.sort
+    @writers = Writer.all.order(:name)
   end
 end

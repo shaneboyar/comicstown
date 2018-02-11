@@ -1,0 +1,5 @@
+<div class="SeriesIndex_Container">
+  <% @issues.each do |issue| %>
+    <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
+  <% end %>
+</div>

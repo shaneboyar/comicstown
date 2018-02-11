@@ -1,0 +1,23 @@
+.SeriesIndex_Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1280px;
+  padding: 0 16px;
+}
+
+.SeriesIndex_IssueCover {
+  padding: 5px;
+}
+
+.IssueShow_Container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.IssueShow_IssueCover {
+  height: auto;
+  width: 320px;
+}

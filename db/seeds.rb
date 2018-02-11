@@ -7,19 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "faker"
-#  Creates Test Publisher w/ Series, Issue, and Creative Team
-publisher = Publisher.create(name: "Test Publisher")
-series = Series.create(title: "Test Series")
-publisher.series << series
-
-issue = Issue.create(title: "Test Series #1")
-series.issues << issue
-
-writer = Writer.create(name: "Test Writer")
-issue.writers << writer
-
-artist = Artist.create(name: "Test Aritst")
-issue.artists << artist
 
 # Creates 50 unique Writers
 50.times do
@@ -64,7 +51,7 @@ series.each do |series|
   series_artist = Artist.order("RANDOM()").first
   rand(10).times do |i|
     issue = Issue.new
-    issue_title = series.title + " ##{i+1}"
+    issue_title = series.title + " #{i+1}"
     issue.title = issue_title
     issue.description = Faker::Lorem.paragraph
     issue.page_count = 22
@@ -76,8 +63,7 @@ series.each do |series|
       last_used_date = release_date
     end
     issue.release_date = release_date
-    Faker::Placeholdit.image("640x960", 'jpg', series_cover_color, '000', issue_title)
-    issue.external_image_url = Faker::LoremPixel.image("640x960", false, 'people', nil, issue_title)
+    issue.external_image_url = Faker::Placeholdit.image("320x480", 'jpg', series_cover_color, '000', issue_title)
     issue.save
     series.issues << issue
     issue.writers << series_writer
