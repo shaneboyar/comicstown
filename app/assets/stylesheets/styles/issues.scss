@@ -1,5 +1,12 @@
 .SeriesIndex_Container {
   display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  padding: 0 16px;
+}
+
+.SeriesIndex_Series {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -9,6 +16,10 @@
 
 .SeriesIndex_IssueCover {
   padding: 5px;
+}
+
+.SeriesIndex_Paginator {
+  align-self: center;
 }
 
 .IssueShow_Container {

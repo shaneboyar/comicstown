@@ -1,5 +1,16 @@
 <div class="SeriesIndex_Container">
-  <% @issues.each do |issue| %>
-    <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
-  <% end %>
+  <div class="SeriesIndex_Series">
+    <% @issues.each do |issue| %>
+      <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
+    <% end %>
+  </div>
+  <ul class="pagination SeriesIndex_Paginator">
+    <li class="<%= @current_page.zero? ? 'disabled' : 'waves-effect' %>"><a href=<%= "?pg=#{@current_page - 1}" %>><i class="material-icons">chevron_left</i></a></li>
+      <% @number_of_pages.times do |i| %>
+        <li class="<%= @current_page == i+1 ? 'active' : 'waves-effect' %>">
+          <a href=<%= "?pg=#{i+1}" %>><%= i+1 %></a>
+        </li>
+      <% end %>
+      <li class="<%= @current_page == @number_of_pages ? 'disabled' : 'waves-effect' %>"><a href=<%= "?pg=#{@current_page + 1}" %>><i class="material-icons">chevron_right</i></a></li>
+  </ul>
 </div>

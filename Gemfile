@@ -27,7 +27,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Add Google Materialize Styles
+gem 'jquery-rails'
 gem 'materialize-sass'
+
+# Add Pagination TODO: Will probably want to use this later
+# gem 'will_paginate', '>= 3.1'
+
 # Lorem Ipsum Generator
 gem 'faker', require: false
 
