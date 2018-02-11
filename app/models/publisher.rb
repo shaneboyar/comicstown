@@ -10,5 +10,5 @@
 
 class Publisher < ApplicationRecord
   has_many :series, dependent: :destroy
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
 end

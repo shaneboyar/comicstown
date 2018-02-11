@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Add Google Materialize Styles
 gem 'materialize-rails'
+# Lorem Ipsum Generator
+gem 'faker', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

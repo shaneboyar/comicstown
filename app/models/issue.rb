@@ -19,6 +19,6 @@ class Issue < ApplicationRecord
   has_and_belongs_to_many :inkers
   has_and_belongs_to_many :colorists
   belongs_to :series
-  validates :name, uniqueness: { scope: :series,
+  validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }
 end
