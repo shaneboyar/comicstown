@@ -9,6 +9,7 @@
 #  release_date :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  series_id    :integer
 #
 
 require 'test_helper'
