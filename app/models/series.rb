@@ -8,6 +8,10 @@
 #  updated_at   :datetime         not null
 #  publisher_id :integer
 #
+# Indexes
+#
+#  index_series_on_publisher_id  (publisher_id)
+#
 
 class Series < ApplicationRecord
   has_many :issues, dependent: :destroy

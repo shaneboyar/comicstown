@@ -12,6 +12,10 @@
 #  series_id          :integer
 #  external_image_url :string
 #
+# Indexes
+#
+#  index_issues_on_series_id  (series_id)
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
