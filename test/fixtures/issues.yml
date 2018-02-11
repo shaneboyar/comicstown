@@ -2,14 +2,15 @@
 #
 # Table name: issues
 #
-#  id           :integer          not null, primary key
-#  title        :string
-#  description  :text
-#  page_count   :integer
-#  release_date :datetime
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  series_id    :integer
+#  id                 :integer          not null, primary key
+#  title              :string
+#  description        :text
+#  page_count         :integer
+#  release_date       :datetime
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  series_id          :integer
+#  external_image_url :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
