@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Add Google Materialize Styles
-gem 'jquery-rails'
 gem 'materialize-sass'
 # Lorem Ipsum Generator
 gem 'faker', require: false
