@@ -5,7 +5,7 @@
     <% end %>
   </div>
   <ul class="pagination SeriesIndex_Paginator">
-    <li class="<%= @current_page.zero? ? 'disabled' : 'waves-effect' %>"><a href=<%= "?pg=#{@current_page - 1}" %>><i class="material-icons">chevron_left</i></a></li>
+    <li class="<%= @current_page == 1 ? 'disabled' : 'waves-effect' %>"><a href=<%= "?pg=#{@current_page - 1}" %>><i class="material-icons">chevron_left</i></a></li>
       <% @number_of_pages.times do |i| %>
         <li class="<%= @current_page == i+1 ? 'active' : 'waves-effect' %>">
           <a href=<%= "?pg=#{i+1}" %>><%= i+1 %></a>
