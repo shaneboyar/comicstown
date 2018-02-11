@@ -16,4 +16,5 @@ class Issue < ApplicationRecord
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :inkers
   has_and_belongs_to_many :colorists
+  belongs_to :series
 end

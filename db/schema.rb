@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211040202) do
+ActiveRecord::Schema.define(version: 20180211042822) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -52,11 +52,27 @@ ActiveRecord::Schema.define(version: 20180211040202) do
     t.datetime "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "series_id"
+    t.index ["series_id"], name: "index_issues_on_series_id"
   end
 
   create_table "issues_writers", id: false, force: :cascade do |t|
     t.integer "issue_id", null: false
     t.integer "writer_id", null: false
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "publisher_id"
+    t.index ["publisher_id"], name: "index_series_on_publisher_id"
   end
 
   create_table "writers", force: :cascade do |t|
