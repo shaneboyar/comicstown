@@ -1,9 +1,11 @@
 <div class="IssueShow_Container">
   <%= image_tag(@issue.external_image_url, class: "IssueShow_IssueCover") %>
-  <h1><%= @issue.title %></h1>
-  <h5>Written by: <%= @issue.writers.all.pluck(:name).join(", ") %></h5>
-  <h5>Art by: <%= @issue.artists.all.pluck(:name).join(", ") %></h5>
-  <p><%= @issue.description %></p>
-  <p>Release Date: <%= @issue.release_date.to_date %></p>
-  <p>Page Count: <%= @issue.page_count %></p>
+  <div class="IssueShow_Metadata">
+    <h1><%= @issue.title %></h1>
+    <h5>Written by: <%= @issue.writers.all.pluck(:name).join(", ") %></h5>
+    <h5>Art by: <%= @issue.artists.all.pluck(:name).join(", ") %></h5>
+    <p><%= @issue.description %></p>
+    <p>Release Date: <%= @issue.release_date.to_date %></p>
+    <p>Page Count: <%= @issue.page_count %></p>
+  </div>
 </div>
