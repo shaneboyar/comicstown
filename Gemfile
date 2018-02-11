@@ -18,8 +18,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+# Webpack
+gem 'webpacker', '~> 3.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'rack-cors', :require => 'rack/cors'
 # Easy User Management
 gem 'devise'
 gem 'omniauth-facebook'

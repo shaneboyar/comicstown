@@ -3,9 +3,16 @@
   flex-direction: column;
 }
 
+.SeriesIndex_Searcher {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
 .SeriesIndex_Series {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
