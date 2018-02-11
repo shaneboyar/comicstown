@@ -12,6 +12,10 @@
 #  series_id          :integer
 #  external_image_url :string
 #
+# Indexes
+#
+#  index_issues_on_series_id  (series_id)
+#
 
 class Issue < ApplicationRecord
   has_and_belongs_to_many :writers
