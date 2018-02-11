@@ -1,0 +1,11 @@
+<% @series.each do |serie| %>
+  <h1><%= serie.title %></h1>
+  <% serie.issues.each do |issue| %>
+    <h2><%= issue.title %></h2>
+    <h3>Writers: <%= issue.writers.pluck(:name).join(', ') %></h3>
+    <h3>Artists: <%= issue.artists.pluck(:name).join(', ') %></h3>
+    <p>Description: <%= issue.description %></p>
+    <p>Released on: <%= issue.release_date.to_date %></p>
+    <p>Page count: <%= issue.page_count %></p>
+  <% end %>
+<% end %>
