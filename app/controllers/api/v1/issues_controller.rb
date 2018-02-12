@@ -1,11 +1,8 @@
 module Api
   module V1
     class IssuesController < ApplicationController
-      def index
-        render json: {issues: Issue.all}
-      end
-      def show
-        render json: {issue: Issue.find_by(title: params[:id])}
+      def search
+        render json: {issues: Issue.__elasticsearch__.search(params[:query]).results}
       end
     end
   end

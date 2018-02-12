@@ -18,7 +18,7 @@ class ComicSearcher extends React.Component {
 
   render() {
     return (
-      <form onSubmit={() => this.props.onSubmit(event, this.state.value)}>
+      <form onSubmit={(event) => this.props.onSubmit(event, this.state.value)}>
         <label>
           Name:
           <input type="text" value={this.state.value} onChange={this.handleChange} />

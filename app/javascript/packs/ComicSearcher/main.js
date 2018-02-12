@@ -10,26 +10,27 @@ class ComicSearcher extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      issue: null
+      issues: null
     }
   }
 
   fetchComic = (query) => {
     this.setState({ loading: true });
-    fetch(`http://localhost:3000/api/v1/issues/${escape(query)}`)
+    fetch(`http://localhost:3000/api/v1/issues/search/${escape(query)}`)
     .then(results => {
       return results.json();
     }).then(data => {
+      var result = data.issues.map(issue => issue._source)
       this.setState({
-        issue: data.issue,
+        issues: result,
         loading: false
       });
     })
   }
 
   onSubmit = (event, value) => {
-    this.fetchComic(value);
     event.preventDefault();
+    this.fetchComic(value);
   }
 
   renderSearcher = () => {
@@ -40,11 +41,19 @@ class ComicSearcher extends React.Component {
     }
   }
 
+  renderIssues = () => (
+    this.state.issues.map(issue => (
+      <Issue key={issue.id} issue={issue} />
+    ))
+  )
+
   render() {
     return (
       <React.Fragment>
         {this.renderSearcher()}
-        {this.state.issue && <Issue issue={this.state.issue} />}
+        <div className="IssueIndex_SearchResults">
+          {this.state.issues && this.renderIssues()}
+        </div>
       </React.Fragment>
     )
   }

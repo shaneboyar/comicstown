@@ -26,8 +26,10 @@ gem 'rack-cors', :require => 'rack/cors'
 # Easy User Management
 gem 'devise'
 gem 'omniauth-facebook'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+
+# Elasticsearch
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

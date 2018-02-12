@@ -17,7 +17,12 @@
 #  index_issues_on_series_id  (series_id)
 #
 
+require 'elasticsearch/model'
+
 class Issue < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   has_and_belongs_to_many :writers
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :inkers
