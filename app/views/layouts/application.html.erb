@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wcsir</title>
+    <%= display_meta_tags site: 'Wcsir', reverse: true %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -31,5 +31,6 @@
     <div class="App_Container">
       <%= yield %>
     </div>
+    <%= render partial: 'layouts/footer'%>
   </body>
 </html>
