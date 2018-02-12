@@ -33,6 +33,15 @@
 .IssueIndex_SearchResults {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.SeriesIndex_SearcherForm {
+  display: flex !important;
+}
+
+.SeriesIndex_SearcherFormField {
+  padding-bottom: 0 !important;
 }
 
 .IssueIndex_SearchResult {

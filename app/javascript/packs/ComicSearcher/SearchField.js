@@ -18,13 +18,20 @@ class ComicSearcher extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(event) => this.props.onSubmit(event, this.state.value)}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="row">
+        <form className="col s12" onSubmit={(event) => {
+                                            this.props.onSubmit(event, this.state.value);
+                                            this.setState({value: ''})}}>
+          <div className="row">
+            <div className="input-field inline col s12 SeriesIndex_SearcherForm">
+              <textarea id="textarea1" className="materialize-textarea SeriesIndex_SearcherFormField" value={this.state.value} onChange={this.handleChange} />
+              <label htmlFor="textarea1">Title, Author, Whatever</label>
+              <button className="btn waves-effect waves-light" type="submit" value="Submit">Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 }

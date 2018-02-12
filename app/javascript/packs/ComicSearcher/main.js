@@ -14,9 +14,17 @@ class ComicSearcher extends React.Component {
     }
   }
 
+  handleErrors = (response) => {
+    if (!response.ok) {
+      console.log(response.statusText);
+    }
+    return response;
+  }
+
   fetchComic = (query) => {
     this.setState({ loading: true });
     fetch(`http://localhost:3000/api/v1/issues/search/${escape(query)}`)
+    .then(this.handleErrors)
     .then(results => {
       return results.json();
     }).then(data => {
@@ -25,7 +33,13 @@ class ComicSearcher extends React.Component {
         issues: result,
         loading: false
       });
-    })
+    }).catch(error => {
+      console.log(error);
+      this.setState({
+        loading: false,
+        issues: null
+      })
+    });
   }
 
   onSubmit = (event, value) => {
@@ -33,27 +47,19 @@ class ComicSearcher extends React.Component {
     this.fetchComic(value);
   }
 
-  renderSearcher = () => {
-    if(this.state.loading) {
-      return <Loader />;
-    } else {
-      return <SearchField onSubmit={this.onSubmit} />;
-    }
-  }
-
   renderIssues = () => (
-    this.state.issues.map(issue => (
-      <Issue key={issue.id} issue={issue} />
-    ))
+    <div className="IssueIndex_SearchResults">
+      {this.state.issues &&this.state.issues.map(issue => (
+        <Issue key={issue.id} issue={issue} />
+      ))}
+    </div>
   )
 
   render() {
     return (
       <React.Fragment>
-        {this.renderSearcher()}
-        <div className="IssueIndex_SearchResults">
-          {this.state.issues && this.renderIssues()}
-        </div>
+        <SearchField onSubmit={this.onSubmit} />
+        {this.renderIssues()}
       </React.Fragment>
     )
   }
