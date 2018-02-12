@@ -30,4 +30,14 @@ class Issue < ApplicationRecord
   belongs_to :series
   validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }
+
+  def as_indexed_json(options={})
+    self.as_json(
+      include: { writers:   { only: :name },
+                 artists:   { only: :name },
+                 inkers:    { only: :name },
+                 colorists: { only: :name },
+                 series:    { only: :title }
+               })
+  end
 end
