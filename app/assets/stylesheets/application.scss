@@ -1,6 +1,7 @@
 @import 'base/mixins';
 // @import 'base/globals';
 @import 'styles/issues';
+@import 'styles/static_pages';
 
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
@@ -10,7 +11,7 @@
   padding: 16px;
 }
 
-.footer {
+.App_FooterContainer {
   text-align: center;
   margin: 100px auto;
 }
