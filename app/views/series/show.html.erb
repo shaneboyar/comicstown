@@ -1,3 +1,4 @@
+<% title @serie.title + " by " + @serie.publisher.name %>
 <nav class="content-nav">
   <%= link_to @serie.publisher.name, "#", class: "breadcrumb" %>
   <%= link_to @serie.title, series_path(@serie), class: "breadcrumb" %>
