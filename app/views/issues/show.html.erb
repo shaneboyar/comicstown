@@ -1,3 +1,9 @@
+<div>
+  <%= link_to @issue.series do %>
+    <%= @issue.series_id %>
+  <% end %>
+     > <%= @issue.title %>
+</div>
 <div class="IssueShow_Container">
   <%= image_tag(@issue.external_image_url, class: "IssueShow_IssueCover") %>
   <div class="IssueShow_Metadata">
