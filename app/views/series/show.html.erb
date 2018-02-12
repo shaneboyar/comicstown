@@ -1,10 +1,11 @@
-<div>
-  <%= @serie.publisher.name %>
-  >
-  <%= link_to @serie do %>
-    <%= @serie.title %>
-  <% end %>
-</div>
+<nav class="content-nav">
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to @serie.publisher.name, "#", class: "breadcrumb" %>
+      <%= link_to @serie.title, series_path(@serie), class: "breadcrumb" %>
+    </div>
+  </div>
+</nav>
 <div class="serieShow_Container">
   <div class="serieShow_Metadata">
     <h1><%= @serie.title %></h1>

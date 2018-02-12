@@ -1,10 +1,12 @@
-<div>
-  <%= @issue.series.publisher.name %>
-  >
-  <%= link_to @issue.series.title, series_path(@issue.series) %>
-  >
-  <%= link_to @issue.title, @issue %> 
-</div>
+<nav class="content-nav">
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to @issue.series.publisher.name, "#", class: "breadcrumb" %>
+      <%= link_to @issue.series.title, series_path(@issue.series), class: "breadcrumb" %>
+      <%= link_to @issue.title, @issue, class: "breadcrumb" %>
+    </div>
+  </div>
+</nav>
 <div class="IssueShow_Container">
   <%= image_tag(@issue.external_image_url, class: "IssueShow_IssueCover") %>
   <div class="IssueShow_Metadata">
