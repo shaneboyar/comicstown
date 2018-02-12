@@ -18,6 +18,28 @@
 
 nav.content-nav {
   margin-bottom: 20px;
-  background: #777;
+  background: #fff;
   padding-left: 10px;
+  box-shadow: none;
+}
+.content-nav .breadcrumb{
+  color: #777;
+  opacity: 0.7;
+}
+
+.content-nav .breadcrumb:before {
+    content: '\E5CC';
+    color: #777;
+    opacity: 0.7;
+    vertical-align: top;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 10px 0 8px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content-nav .breadcrumb:last-child {
+  color: #000;
 }
