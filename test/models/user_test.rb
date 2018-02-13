@@ -21,6 +21,7 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
+#  admin                  :boolean          default("f")
 #
 # Indexes
 #

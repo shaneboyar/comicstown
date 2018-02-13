@@ -10,7 +10,8 @@ class ComicSearcher extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      issues: null
+      issues: null,
+      search_id: null
     }
   }
 
@@ -28,10 +29,10 @@ class ComicSearcher extends React.Component {
     .then(results => {
       return results.json();
     }).then(data => {
-      var result = data.issues
       this.setState({
-        issues: result,
-        loading: false
+        issues: data.issues,
+        loading: false,
+        search_id: data.search_id
       });
     }).catch(error => {
       console.log(error);
@@ -50,7 +51,7 @@ class ComicSearcher extends React.Component {
   renderIssues = () => (
     <div className="IssueIndex_SearchResults">
       {this.state.issues &&this.state.issues.map(issue => (
-        <Issue key={issue.id} issue={issue} />
+        <Issue key={issue.id} issue={issue} sid={this.state.search_id} />
       ))}
     </div>
   )

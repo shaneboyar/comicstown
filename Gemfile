@@ -27,8 +27,9 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
 gem 'omniauth-facebook'
 
-# Elasticsearch / Searchkick
+# Elasticsearch / Searchkick / Searchjoy
 gem 'searchkick'
+gem 'searchjoy'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +43,9 @@ gem 'materialize-sass'
 
 # Lorem Ipsum Generator
 gem 'faker', require: false
+
+# SEO Gems
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

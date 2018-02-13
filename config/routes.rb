@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get "/privacy" => "static_pages#privacy"
   get "/terms" => "static_pages#terms"
 
+  # Searchjoy Dashboard
+  authenticate :user, -> (user) { user.admin? } do
+    mount Searchjoy::Engine, at: "searchjoy"
+  end
+
   # API Routes
   namespace :api do
     namespace :v1 do

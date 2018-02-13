@@ -8,5 +8,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    search = Searchjoy::Search.find(params[:sid])
+    search.convert(@issue)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211185225) do
+ActiveRecord::Schema.define(version: 20180213021038) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -68,6 +68,22 @@ ActiveRecord::Schema.define(version: 20180211185225) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "searchjoy_searches", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "search_type"
+    t.string "query"
+    t.string "normalized_query"
+    t.integer "results_count"
+    t.datetime "created_at"
+    t.integer "convertable_id"
+    t.string "convertable_type"
+    t.datetime "converted_at"
+    t.index ["convertable_id", "convertable_type"], name: "index_searchjoy_searches_on_convertible_id_type"
+    t.index ["created_at"], name: "index_searchjoy_searches_on_created_at"
+    t.index ["search_type", "created_at"], name: "index_searchjoy_searches_on_search_type_and_created_at"
+    t.index ["search_type", "normalized_query", "created_at"], name: "index_searchjoy_searches_on_search_type_normalized_query"
+  end
+
   create_table "series", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -95,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180211185225) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
