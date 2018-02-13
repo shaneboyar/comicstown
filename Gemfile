@@ -31,20 +31,14 @@ gem 'omniauth-facebook'
 gem 'searchkick'
 gem 'searchjoy'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Add Google Materialize Styles
 gem 'jquery-rails'
 gem 'materialize-sass'
 
 # Add Pagination TODO: Will probably want to use this later
-# gem 'will_paginate', '>= 3.1'
+# gem 'will_paginate', '>= 3.1' # https://github.com/mislav/will_paginate
 # OR
-# gem 'kaminari'
-
-# Lorem Ipsum Generator
-gem 'faker', require: false
+# gem 'kaminari' # https://github.com/kaminari/kaminari
 
 # SEO Gems
 gem 'meta-tags'
@@ -57,6 +51,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
+  # Lorem Ipsum Generator
+  gem 'faker', require: false
 end
 
 group :development do
