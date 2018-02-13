@@ -46,6 +46,7 @@ gem 'faker', require: false
 
 # SEO Gems
 gem 'meta-tags'
+gem 'sitemap_generator' # https://github.com/kjvarga/sitemap_generator
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
