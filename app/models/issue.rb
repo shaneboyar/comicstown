@@ -18,6 +18,8 @@
 #
 
 class Issue < ApplicationRecord
+  searchkick
+
   has_and_belongs_to_many :writers
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :inkers
@@ -25,4 +27,15 @@ class Issue < ApplicationRecord
   belongs_to :series
   validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }
+
+  def search_data
+    {
+      title: title,
+      series: series.title,
+      writers: writers.pluck(:name),
+      artists: artists.pluck(:name),
+      publisher: series.publisher.name,
+      description: description
+    }
+  end
 end
