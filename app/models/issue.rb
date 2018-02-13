@@ -17,11 +17,8 @@
 #  index_issues_on_series_id  (series_id)
 #
 
-require 'elasticsearch/model'
-
 class Issue < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  searchkick
 
   has_and_belongs_to_many :writers
   has_and_belongs_to_many :artists
@@ -31,13 +28,14 @@ class Issue < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }
 
-  def as_indexed_json(options={})
-    self.as_json(
-      include: { writers:   { only: :name },
-                 artists:   { only: :name },
-                 inkers:    { only: :name },
-                 colorists: { only: :name },
-                 series:    { only: :title }
-               })
+  def search_data
+    {
+      title: title,
+      series: series.title,
+      writers: writers.pluck(:name),
+      artists: artists.pluck(:name),
+      publisher: series.publisher.name,
+      description: description
+    }
   end
 end

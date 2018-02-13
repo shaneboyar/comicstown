@@ -28,7 +28,7 @@ class ComicSearcher extends React.Component {
     .then(results => {
       return results.json();
     }).then(data => {
-      var result = data.issues.map(issue => issue._source)
+      var result = data.issues
       this.setState({
         issues: result,
         loading: false

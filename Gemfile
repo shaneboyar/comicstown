@@ -27,9 +27,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
 gem 'omniauth-facebook'
 
-# Elasticsearch
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+# Elasticsearch / Searchkick
+gem 'searchkick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
