@@ -2,7 +2,9 @@ module Api
   module V1
     class IssuesController < ApplicationController
       def search
-        render json: {issues: Issue.search(params[:query]).results}
+        query = Issue.search(params[:query], track: {user_id: nil}, order: {title: :asc})
+        results = query.results
+        render json: {issues: results, search_id: query.search.id }
       end
     end
   end
