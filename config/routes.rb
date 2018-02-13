@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root 'application#root'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :publishers, :series, :issues, :writers, :artists
+  get "/about" => "static_pages#about"
+  get "/privacy" => "static_pages#privacy"
+  get "/terms" => "static_pages#terms"
+
+  # API Routes
   namespace :api do
     namespace :v1 do
       namespace :issues do
@@ -10,4 +15,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end

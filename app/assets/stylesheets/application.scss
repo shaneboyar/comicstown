@@ -1,6 +1,7 @@
 @import 'base/mixins';
 // @import 'base/globals';
 @import 'styles/issues';
+@import 'styles/static_pages';
 
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
@@ -8,4 +9,28 @@
 .App_Container {
   max-width: 1280px;
   padding: 16px;
+}
+
+.App_FooterContainer {
+  text-align: center;
+  margin: 100px auto;
+}
+
+nav.content-nav {
+  margin-bottom: 20px;
+  background: #fff;
+  padding-left: 10px;
+  box-shadow: none;
+}
+
+// overwriting breadcrumb text color
+.content-nav .breadcrumb,
+.content-nav .breadcrumb:before {
+  color: #777;
+  opacity: 0.7;
+}
+
+// overwriting breadcrumb text color
+.content-nav .breadcrumb:last-child {
+  color: #000;
 }
