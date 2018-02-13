@@ -40,6 +40,8 @@ gem 'materialize-sass'
 
 # Add Pagination TODO: Will probably want to use this later
 # gem 'will_paginate', '>= 3.1'
+# OR
+# gem 'kaminari'
 
 # Lorem Ipsum Generator
 gem 'faker', require: false
