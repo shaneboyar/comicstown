@@ -28,6 +28,12 @@ class Issue < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }
 
+  # TODO: Make Async
+  after_commit :reindex_issue
+  def reindex_issue
+    Issue.reindex
+  end
+
   def search_data
     {
       title: title,
