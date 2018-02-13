@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get "/terms" => "static_pages#terms"
 
   # Searchjoy Dashboard
-  # authenticate :user, -> (user) { user.admin? } do
+  authenticate :user, -> (user) { user.admin? } do
     mount Searchjoy::Engine, at: "searchjoy"
-  # end
+  end
 
   # API Routes
   namespace :api do
