@@ -43,6 +43,10 @@ gem 'materialize-sass'
 # SEO Gems
 gem 'meta-tags'
 gem 'sitemap_generator' # https://github.com/kjvarga/sitemap_generator
+# gem 'friendly_id' # TODO: https://github.com/norman/friendly_id
+
+# Chron Jobs
+# gem 'whenever', require: false # https://github.com/javan/whenever
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
