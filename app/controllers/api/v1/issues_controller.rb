@@ -10,6 +10,9 @@ module Api
           page: query.options[:page],
           total_pages: query.total_pages}
       end
+      def index
+        render json: { issues: Issue.all }
+      end
     end
   end
 end
