@@ -9,6 +9,6 @@
 #
 
 class Publisher < ApplicationRecord
-  has_many :series, dependent: :destroy
+  has_many :series, -> { order('title asc') }, dependent: :destroy
   validates :name, uniqueness: true, presence: true
 end
