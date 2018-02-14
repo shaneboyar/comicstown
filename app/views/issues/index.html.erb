@@ -1,5 +1,4 @@
 <div class="SeriesIndex_Container">
-  <div class="SeriesIndex_Searcher" id="comicsearcher"></div>
   <div class="SeriesIndex_Series">
     <% @issues.each do |issue| %>
       <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
