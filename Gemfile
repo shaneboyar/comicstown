@@ -36,7 +36,7 @@ gem 'jquery-rails'
 gem 'materialize-sass'
 
 # Add Pagination TODO: Will probably want to use this later
-# gem 'will_paginate', '>= 3.1' # https://github.com/mislav/will_paginate
+gem 'will_paginate', '>= 3.1' # https://github.com/mislav/will_paginate
 # OR
 # gem 'kaminari' # https://github.com/kaminari/kaminari
 
