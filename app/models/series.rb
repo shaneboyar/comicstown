@@ -14,7 +14,7 @@
 #
 
 class Series < ApplicationRecord
-  has_many :issues, dependent: :destroy
+  has_many :issues, -> { order('title asc') }, dependent: :destroy
   belongs_to :publisher
   validates :title, uniqueness: true, presence: true
 end
