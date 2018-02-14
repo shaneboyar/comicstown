@@ -1,0 +1,11 @@
+.SeriesShow_Issues {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.SeriesShow_Issue {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

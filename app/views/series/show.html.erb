@@ -1,13 +1,16 @@
 <% title @serie.title + " by " + @serie.publisher.name %>
 <nav class="content-nav">
-  <%= link_to @serie.publisher.name, "#", class: "breadcrumb" %>
+  <%= link_to @serie.publisher.name, publisher_path(@serie.publisher), class: "breadcrumb" %>
   <%= link_to @serie.title, series_path(@serie), class: "breadcrumb" %>
 </nav>
-<div class="serieShow_Container">
-  <div class="serieShow_Metadata">
-    <h1><%= @serie.title %></h1>
+<div class="SeriesShow_Container">
+  <h1 class="SeriesShow_Title"><%= @serie.title %></h1>
+  <div class="SeriesShow_Issues">
+    <% @serie.issues.each do |issue| %>
+      <div class="SeriesShow_Issue">
+        <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
+        <h5><%= issue.title %></h5>
+      </div>
+    <% end %>
   </div>
-  <% @serie.issues.each do |issue| %>
-    <%= link_to(image_tag("#{issue.external_image_url}", class: "SeriesIndex_IssueCover responsive-img"), issue_path(issue)) %>
-  <% end %>
 </div>

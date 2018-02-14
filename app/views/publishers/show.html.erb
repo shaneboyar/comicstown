@@ -1,0 +1,6 @@
+<h1><%= @publisher.name %></h1>
+<div class="PublisherShow_Series">
+  <% @publisher.series.each do |serie| %>
+    <%= link_to(serie.title, series_path(serie), class: 'PublisherShow_Serie') %>
+  <% end %>
+</div>
