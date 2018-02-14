@@ -6,7 +6,7 @@ const Issue = ({issue, sid}) => (
   <a href={`/issues/${issue.id}?sid=${sid}`}>
     <div className="IssueIndex_SearchResult">
       <img src={issue.external_image_url} />
-      <h4>{issue.title}</h4>
+      <p>{issue.title}</p>
     </div>
   </a>
 );

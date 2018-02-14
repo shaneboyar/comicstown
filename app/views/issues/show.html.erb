@@ -7,7 +7,7 @@
 <div class="IssueShow_Container">
   <%= image_tag(@issue.external_image_url, class: "IssueShow_IssueCover") %>
   <div class="IssueShow_Metadata">
-    <h1><%= @issue.title %></h1>
+    <h4><%= @issue.title %></h4>
     <h5>Written by: <%= @issue.writers.all.pluck(:name).join(", ") %></h5>
     <h5>Art by: <%= @issue.artists.all.pluck(:name).join(", ") %></h5>
     <p><%= @issue.description %></p>

@@ -1,4 +1,5 @@
 require 'csv'
+require 'faker'
 
 csv_text = File.read('lib/assets/comics.csv')
 csv = CSV.parse(csv_text, :headers => true)
@@ -10,14 +11,13 @@ csv.each do |row|
     series.publisher = publisher
   end
 
-  issue = Issue.new
-  issue.title = comic["issue_title"]
-  issue.external_image_url = (comic["cover_image"] || Faker::Placeholdit.image("320x480", 'jpg', Faker::Color.hex_color.gsub("#", ""), '000', comic["issue_title"]))
-  issue.description = (comic["description"] || "")
-  issue.page_count = (comic["pages"].to_i || nil)
-  issue.release_date = (comic["release_date"].to_date || "")
-  issue.series = series
-  issue.save
+  issue = Issue.find_or_create_by(title: comic["issue_title"]) do |issue|
+    issue.external_image_url = (comic["cover_image"])
+    issue.description = (comic["description"] || "")
+    issue.page_count = (comic["pages"].to_i || nil)
+    issue.release_date = (comic["release_date"].to_date || "")
+    issue.series = series
+  end
 
   if comic["writers"]
     writers_list = comic["writers"].split(", ")
@@ -51,3 +51,5 @@ csv.each do |row|
     end
   end
 end
+
+Issue.reindex
