@@ -8,6 +8,8 @@
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+
+// Top Level Layout Styles
 .App_Container {
   max-width: 1280px;
   padding: 16px;
@@ -18,6 +20,8 @@
   margin: 100px auto;
 }
 
+
+// Materialize Overwrites
 nav.content-nav {
   margin-bottom: 20px;
   background: #fff;
