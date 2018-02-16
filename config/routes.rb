@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :issues do
         get "/", action: 'index', as: 'index'
-        get "/search/:query/:user_id", action: 'search', as: 'search'
+        get "/search", action: 'search', as: 'search'
+        get "/new-releases", action: 'new_releases', as: 'new_releases'
       end
     end
   end

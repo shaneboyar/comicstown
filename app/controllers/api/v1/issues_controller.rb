@@ -2,7 +2,7 @@ module Api
   module V1
     class IssuesController < ApplicationController
       def search
-        query = Issue.search(params[:query], track: {user_id: params[:user_id]}, order: {title: :asc}, page: params[:page],  misspellings: false, per_page: 20)
+        query = Issue.search(params[:query], track: {user_id: params[:uid]}, order: {title: :asc}, page: params[:page],  misspellings: false, per_page: 20)
         results = query.results
         render json: {
           issues: results,
@@ -12,6 +12,9 @@ module Api
       end
       def index
         render json: { issues: Issue.all }
+      end
+      def new_releases
+        render json: Issue.where('release_date > ?', 9.days.ago).order(:title)
       end
     end
   end

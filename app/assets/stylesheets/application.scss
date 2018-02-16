@@ -15,6 +15,19 @@
   padding: 16px;
 }
 
+.ComicScroller_Container {
+  display: flex;
+  flex-direction: column;
+  height: 675px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ComicScroller_Title {
+  padding-left: 32px;
+  align-self: flex-start;
+}
+
 .App_FooterContainer {
   text-align: center;
   margin: 100px auto;
