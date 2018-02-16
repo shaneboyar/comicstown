@@ -50,13 +50,13 @@ class ComicScroller extends React.Component {
         height={650}
         rowCount={1}
         rowHeight={650}
-        width={1200}
+        overscanColumnCount={10}
+        width={window.innerWidth}
       />
     );
   }
 
   render(){
-    console.log(this.state.issues);
     return (
       <div className="ComicScroller_Container">
         <h5 className="ComicScroller_Title">New Releases</h5>
