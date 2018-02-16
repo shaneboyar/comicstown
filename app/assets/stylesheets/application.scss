@@ -18,9 +18,9 @@
 .ComicScroller_Container {
   display: flex;
   flex-direction: column;
-  height: 675px;
+  min-height: 675px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .ComicScroller_Title {
