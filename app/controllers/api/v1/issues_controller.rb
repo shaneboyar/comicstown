@@ -13,8 +13,14 @@ module Api
       def index
         render json: { issues: Issue.all }
       end
-      def new_releases
-        render json: Issue.where('release_date > ?', 9.days.ago).order(:title)
+      def scroller
+        type = params[:type]
+        case type
+        when 'new-releases'
+          render json: Issue.where('release_date > ?', 9.days.ago).order(:title)
+        when 'image-new-releases'
+          render json: Issue.joins(series: :publisher).where('publishers.name = ?', "Image").order(:release_date, :title)
+        end
       end
     end
   end

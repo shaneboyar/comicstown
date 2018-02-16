@@ -17,7 +17,7 @@ class ComicScroller extends React.Component {
   }
 
   fetchNewComics = () => {
-    fetch('http://localhost:3000/api/v1/issues/new-releases')
+    fetch(`http://localhost:3000/api/v1/issues/scroller/?type=${this.props.type}`)
     .then(this.handleErrors)
     .then(results => {
       return results.json();
@@ -32,7 +32,6 @@ class ComicScroller extends React.Component {
   }
 
   renderIssues = (columnIndex, key, style) => {
-    console.log(style);
     return (
       <div key={key} style={style}>
         <Issue issue={this.state.issues[columnIndex]} />
@@ -46,20 +45,27 @@ class ComicScroller extends React.Component {
       <Grid
         cellRenderer={({ columnIndex, key, rowIndex, style }) => this.renderIssues(columnIndex, key, style)}
         columnCount={this.state.issues.length}
-        columnWidth={400}
+        columnWidth={380}
         height={650}
+        overscanColumnCount={10}
         rowCount={1}
         rowHeight={650}
-        overscanColumnCount={10}
+        scrollLeft={-20}
+        style={{left: 16}}
         width={window.innerWidth}
       />
     );
   }
 
+  renderTitle = (type) => {
+    var title = type.replace(/-/g, ' ');
+    return <h5 className="ComicScroller_Title">{title}</h5>;
+  }
+
   render(){
     return (
       <div className="ComicScroller_Container">
-        <h5 className="ComicScroller_Title">New Releases</h5>
+        {this.renderTitle(this.props.type)}
         {this.renderScroller()}
       </div>
     );
@@ -70,7 +76,6 @@ const Issue = ({issue}) => (
   <a href={`/issues/${issue.id}`}>
     <div className="IssueIndex_SearchResult">
       <img src={issue.external_image_url} />
-      <p>{issue.title}</p>
     </div>
   </a>
 );

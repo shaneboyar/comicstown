@@ -100,11 +100,11 @@ class SearchField extends React.Component {
   render() {
     return (
       <div className="row">
-        <form className="col s12" onSubmit={(event) => {
+        <form onSubmit={(event) => {
                                             this.props.onSubmit(event, this.state.value);
                                             this.setState({value: ''})}}>
           <div className="row">
-            <div className="input-field inline col s12 SeriesIndex_SearcherForm">
+            <div className="input-field SeriesIndex_SearcherForm">
               {this.renderAutocomplete()}
             </div>
           </div>

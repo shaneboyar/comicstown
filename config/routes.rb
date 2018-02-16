@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       namespace :issues do
         get "/", action: 'index', as: 'index'
         get "/search", action: 'search', as: 'search'
-        get "/new-releases", action: 'new_releases', as: 'new_releases'
+        get "/scroller", action: 'scroller', as: 'scroller'
       end
     end
   end

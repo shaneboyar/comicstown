@@ -12,8 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if(searcher_container) {
     ReactDOM.render(<ComicSearcher />, searcher_container)
   }
-  const scroller_container = document.getElementById('comic-scroller');
-  if(scroller_container) {
-    ReactDOM.render(<ComicScroller />, scroller_container)
+  const scroller_containers = document.getElementsByClassName('comic-scroller');
+  if(scroller_containers) {
+    for ( let scroller_container of scroller_containers){
+      const type = scroller_container.getAttribute('type');
+      ReactDOM.render(<ComicScroller type={type} />, scroller_container);
+    }
   }
 })
