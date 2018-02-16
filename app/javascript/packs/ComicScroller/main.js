@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from 'react-virtualized/dist/commonjs/Grid'
+import { Loader } from '../Components'
 
 class ComicScroller extends React.Component {
   constructor(props) {
@@ -39,21 +40,28 @@ class ComicScroller extends React.Component {
     );
   }
 
+  renderScroller = () => {
+    if(this.state.loading) return <Loader />;
+    return (
+      <Grid
+        cellRenderer={({ columnIndex, key, rowIndex, style }) => this.renderIssues(columnIndex, key, style)}
+        columnCount={this.state.issues.length}
+        columnWidth={400}
+        height={650}
+        rowCount={1}
+        rowHeight={650}
+        width={1200}
+      />
+    );
+  }
+
   render(){
     console.log(this.state.issues);
     return (
-      <React.Fragment>
-        <h5>New Releases</h5>
-        <Grid
-          cellRenderer={({ columnIndex, key, rowIndex, style }) => this.renderIssues(columnIndex, key, style)}
-          columnCount={this.state.issues.length}
-          columnWidth={400}
-          height={650}
-          rowCount={1}
-          rowHeight={650}
-          width={1200}
-        />
-      </React.Fragment>
+      <div className="ComicScroller_Container">
+        <h5 className="ComicScroller_Title">New Releases</h5>
+        {this.renderScroller()}
+      </div>
     );
   }
 };
