@@ -45,7 +45,7 @@ class ComicSearcher extends React.Component {
 
   fetchComics = (query, page=1) => {
     this.setState({ loading: true });
-    fetch(`http://localhost:3000/api/v1/issues/search/${escape(query)}/${window.current_user_id}?page=${page}`)
+    fetch(`http://localhost:3000/api/v1/issues/search/?query=${escape(query)}&uid=${window.current_user_id}&page=${page}`)
     .then(this.handleErrors)
     .then(results => {
       return results.json();

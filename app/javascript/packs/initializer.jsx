@@ -4,11 +4,16 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ComicSearcher from './ComicSearcher/main.js'
+import ComicSearcher from './ComicSearcher/main'
+import ComicScroller from './ComicScroller/main'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('comicsearcher');
-  if(container) {
-    ReactDOM.render(<ComicSearcher />, container)
+  const searcher_container = document.getElementById('comicsearcher');
+  if(searcher_container) {
+    ReactDOM.render(<ComicSearcher />, searcher_container)
+  }
+  const scroller_container = document.getElementById('comic-scroller');
+  if(scroller_container) {
+    ReactDOM.render(<ComicScroller />, scroller_container)
   }
 })
