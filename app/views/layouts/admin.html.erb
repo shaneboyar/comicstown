@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= display_meta_tags site: 'Wcsir', reverse: true %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'initializer', 'data-turbolinks-track': 'reload' %>
+    <meta name="turbolinks-visit-control" content="reload">
+    <%= javascript_tag do %>
+      window.current_user_id = <%= current_user&.id || 0 %>;
+    <% end %>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="<%= root_path %>" class="brand-logo">WCSIR ADMIN</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Merchandising', admin_merchandising_comic_scrollers_path %></li>
+          <li><%= link_to 'Search', "#" %></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="App_Container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
