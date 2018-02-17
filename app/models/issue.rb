@@ -19,6 +19,7 @@
 
 class Issue < ApplicationRecord
   searchkick
+  acts_as_taggable
 
   has_and_belongs_to_many :writers
   has_and_belongs_to_many :artists
@@ -43,5 +44,21 @@ class Issue < ApplicationRecord
       publisher: series.publisher.name,
       description: description
     }
+  end
+
+  def series_title
+    series.title
+  end
+
+  def publisher_name
+    series.publisher.name
+  end
+
+  def writer_names
+    writers.pluck(:name).join(", ")
+  end
+
+  def artist_names
+    artists.pluck(:name).join(", ")
   end
 end

@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   get "/terms" => "static_pages#terms"
 
   namespace :admin do
-    authenticate :user, -> (user) { user.admin? } do
-      get "/", to: 'admin#root', as: 'root'
-      mount Searchjoy::Engine, at: "searchjoy"
-      namespace :merchandising do
-        resources :comic_scrollers
-      end
+    get "/", to: 'admin#root', as: 'root'
+    mount Searchjoy::Engine, at: "searchjoy"
+    namespace :merchandising do
+      resources :comic_scrollers
+      resources :issues
     end
   end
 
