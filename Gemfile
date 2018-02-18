@@ -41,7 +41,6 @@ gem 'will_paginate-materialize'
 # Editing/Organizing comics
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 
-
 # SEO Gems
 gem 'meta-tags'
 gem 'sitemap_generator' # https://github.com/kjvarga/sitemap_generator

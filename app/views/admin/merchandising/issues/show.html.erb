@@ -13,5 +13,6 @@
     <p><%= @issue.description %></p>
     <p>Release Date: <%= @issue.release_date.to_date %></p>
     <p>Page Count: <%= @issue.page_count %></p>
+    <p>Tags: <%= render partial: 'admin/merchandising/issues/partials/tag_list', locals: { tags: @issue.tag_list } %></p>
   </div>
 </div>
