@@ -47,7 +47,8 @@ gem 'meta-tags'
 gem 'sitemap_generator' # https://github.com/kjvarga/sitemap_generator
 # gem 'friendly_id' # TODO: https://github.com/norman/friendly_id
 
-# Chron Jobs
+# Jobs
+gem 'sidekiq'
 # gem 'whenever', require: false # https://github.com/javan/whenever
 
 group :development, :test do

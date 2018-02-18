@@ -32,7 +32,7 @@ class Issue < ApplicationRecord
   # TODO: Make Async
   after_commit :reindex_issue
   def reindex_issue
-    Issue.reindex
+    ReindexIssuesJob.perform_later
   end
 
   def search_data

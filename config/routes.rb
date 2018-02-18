@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#root'
@@ -9,7 +11,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/", to: 'admin#root', as: 'root'
-    mount Searchjoy::Engine, at: "searchjoy"
+    mount Searchjoy::Engine, at: 'searchjoy'
+    mount Sidekiq::Web, at: 'sidekiq'
     namespace :merchandising do
       resources :comic_scrollers
       resources :issues
