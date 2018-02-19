@@ -2,5 +2,5 @@
 
 <div id="scrollcreator"
      data-scroller='<%= scroller.to_json %>'
-     data-issues='<%= Issue.where(id: scroller.items.order(:position).pluck(:issue_id)).to_json %>'
+     data-issues='<%= Issue.includes(:comic_scroller_items).where(id: scroller.items.pluck(:issue_id)).order('comic_scroller_items.position').to_json %>'
 ></div>

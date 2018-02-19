@@ -14,6 +14,7 @@ module Api
       end
 
       def update
+        ReorderComicScrollerItemJob.perform_later(params[:id], params[:comic_scroller_id], params[:newIndex])
       end
 
       def destroy

@@ -8,7 +8,8 @@ class ComicScrollerCreator extends React.Component {
     super(props);
     this.state = {
       scroller: this.props.scroller,
-      issues: [...this.props.issues]
+      issues: [...this.props.issues],
+      order_updated: false
     }
   }
 
@@ -50,14 +51,44 @@ class ComicScrollerCreator extends React.Component {
     });
   }
 
+  onReorder = (issues) => {
+    this.setState({
+      issues,
+      order_updated: true
+    });
+  }
+
+  onSave = () => {
+    for ([index, issue] of this.state.issues.entries()) {
+      $.ajax({
+        type: "PATCH",
+        url: `/api/v1/comic_scrollers/${this.state.scroller.id}/comic_scroller_items/${issue.id}`, // Cant I find a way to use comic_scroller_item_id??
+        data: {
+          newIndex: index
+        }
+      });
+    }
+    this.setState({
+      order_updated: false
+    })
+  }
+
   render() {
     const { scroller, issues } = this.state;
     return(
       <div>
         <h1>{scroller.title}</h1>
         <ComicSearcher issueSize='small' scrollerId={scroller.id} onClick={this.onClick} />
-        <DraggableComics scrollerId={scroller.id} issues={issues} afterDrag={(id) => this.deleteComicScrollerItem(id)} />
-        <button className="btn waves-effect waves-light">Save Order
+        <DraggableComics
+          scrollerId={scroller.id}
+          issues={issues}
+          onReorder={(issues) => this.onReorder(issues)}
+          afterDrag={(id) => this.deleteComicScrollerItem(id)} />
+        <button onClick={this.onSave}
+                disabled={!this.state.order_updated}
+                type="button"
+                className="btn waves-effect waves-light">
+                Save Order
           <i className="material-icons right">archive</i>
         </button>
       </div>

@@ -48,9 +48,7 @@ class DragabbleComics extends React.Component {
       result.destination.index
     );
 
-    this.setState({
-      issues,
-    });
+    this.props.onReorder(issues);
   }
 
   renderIssues = () => (
