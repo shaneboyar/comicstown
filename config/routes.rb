@@ -27,6 +27,10 @@ Rails.application.routes.draw do
         get "/search", action: 'search', as: 'search'
         get "/scroller", action: 'scroller', as: 'scroller'
       end
+      namespace :tags do
+        post "/", action: 'create', as: 'create'
+        delete "/", action: 'destroy', as: 'destroy'
+      end
     end
   end
 

@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.AdminIssueShow_Container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.AdminIssueShow_Metadata {
+  position: relative;
+  width: 50%;
+}
+
+.AdminIssueShow_TagsContainer {
+  align-items: center;
+  display: flex;
+}
+
 .AdminIssueEdit_TitleContainer {
   display: flex;
   align-items: center;
@@ -26,3 +42,4 @@
 .AdminIssueEdit_TitleEditButton {
   margin-left: 20px;
 }
+

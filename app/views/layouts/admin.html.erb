@@ -24,6 +24,13 @@
         </ul>
       </div>
     </nav>
+    <% if @issue %>
+      <nav class="content-nav">
+        <%= link_to @issue.series.publisher.name, publisher_path(@issue.series.publisher), class: "breadcrumb" %>
+        <%= link_to @issue.series.title, series_path(@issue.series), class: "breadcrumb" %>
+        <%= link_to @issue.title, @issue, class: "breadcrumb" %>
+      </nav>
+    <% end %>
     <div class="App_Container">
       <%= yield %>
     </div>
