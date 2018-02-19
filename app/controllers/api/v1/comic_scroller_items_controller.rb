@@ -16,6 +16,17 @@ module Api
 
       def update
       end
+
+      def destroy
+        @item = ComicScrollerItem.where(issue_id: params[:id]).where(comic_scroller_id: params[:comic_scroller_id]).first
+        respond_to do |format|
+          if @item.destroy
+            format.json { render json: Issue.find(params[:id]), status: 200 }
+          else
+            format.json { render json: scroller.errors.full_messages, status: :unprocessable_entity }
+          end
+        end
+      end
     end
   end
 end

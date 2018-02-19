@@ -35,13 +35,27 @@ class DragabbleComics extends React.Component {
     return result;
   };
 
+  deleteComicScrollerItem = (id) => {
+    $.ajax({
+      type: "DELETE",
+      url: `/api/v1/comic_scrollers/${this.props.scrollerId}/comic_scroller_items/${id}`,
+      success: (data) => {
+        const nextIssues = this.state.issues.filter(issue => issue.id !== data.id);
+        this.setState({
+          issues: nextIssues
+        })
+      },
+      error: (data) => {
+        alert(data.responseText);
+        return false
+      }
+    });
+  }
+
   onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
-      const nextIssues = this.state.issues.filter(issue => issue.id !== result.draggableId);
-      this.setState({
-        issues: nextIssues
-      })
+      this.deleteComicScrollerItem(result.draggableId);
       return;
     }
 
