@@ -5,3 +5,9 @@
 .AdminComicScrollers_IssueImages {
   max-height: 250px;
 }
+
+.IssueIndex_SearchResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

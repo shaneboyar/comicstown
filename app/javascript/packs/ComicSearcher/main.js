@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Issue from './Issue'
-import SearchField from './SearchField'
-import { Loader } from '../Components'
+import { Issue, Loader, SearchField } from '../Components'
 
 class ComicSearcher extends React.Component {
   constructor(props){
@@ -27,7 +25,6 @@ class ComicSearcher extends React.Component {
   trackScrolling = () => {
     const wrappedElement = document.getElementsByClassName('IssueIndex_SearchResults')[0];
     if (this.isBottom(wrappedElement)) {
-      console.log('search results bottom reached');
       const page = this.state.page + 1;
       if (page <= this.state.total_pages) {
         this.appendComics(this.state.query, page);
@@ -45,7 +42,7 @@ class ComicSearcher extends React.Component {
 
   fetchComics = (query, page=1) => {
     this.setState({ loading: true });
-    fetch(`http://localhost:3000/api/v1/issues/search/?query=${escape(query)}&uid=${window.current_user_id}&page=${page}`)
+    fetch(`http://localhost:3000/api/v1/issues/search?query=${escape(query)}&uid=${window.current_user_id}&page=${page}`)
     .then(this.handleErrors)
     .then(results => {
       return results.json();
@@ -69,7 +66,7 @@ class ComicSearcher extends React.Component {
 
   appendComics = (query, page=1) => {
     this.setState({ loading: true });
-    fetch(`http://localhost:3000/api/v1/issues/search/${escape(query)}/${window.current_user_id}?page=${page}`)
+    fetch(`http://localhost:3000/api/v1/issues/search?query=${escape(query)}&uid=${window.current_user_id}&page=${page}`)
     .then(this.handleErrors)
     .then(results => {
       return results.json();
@@ -86,7 +83,7 @@ class ComicSearcher extends React.Component {
       console.log(error);
       this.setState({
         loading: false,
-        issues: null
+        issues: this.state.issues
       })
     });
   }
@@ -96,27 +93,27 @@ class ComicSearcher extends React.Component {
     this.fetchComics(query);
   }
 
-  scrolledToBottom = () => {
-    var d = document.documentElement;
-    var offset = d.scrollTop + window.innerHeight;
-    var height = d.offsetHeight;
-
-    console.log('offset = ' + offset);
-    console.log('height = ' + height);
-
-    if (offset >= height) {
-      console.log('At the bottom');
-    }
+  renderIssues = () => {
+    const { onClick, scrollerId } = this.props;
+    return (
+      <div className="IssueIndex_SearchResults">
+        {this.state.issues &&this.state.issues.map(issue => (
+          <div style={{position: 'relative'}} onClick={(e) => onClick(e, scrollerId, issue)}>
+            <Issue size={this.props.issueSize} key={issue.id} issue={issue} sid={this.state.search_id} />
+            {this.renderAddButton()}
+          </div>
+        ))}
+      </div>
+    )
   }
 
-
-  renderIssues = () => (
-    <div className="IssueIndex_SearchResults">
-      {this.state.issues &&this.state.issues.map(issue => (
-        <Issue key={issue.id} issue={issue} sid={this.state.search_id} />
-      ))}
-    </div>
-  )
+  renderAddButton = () => {
+    if (this.props.onClick) {
+      return (
+        <a data-remote="true" style={{position: 'absolute', bottom: '16px', right: '16px'}} className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+      );
+    }
+  }
 
   render() {
     return (

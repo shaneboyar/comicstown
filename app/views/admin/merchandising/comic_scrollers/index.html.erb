@@ -1,2 +1,32 @@
-<h1>Comic Scrollers</h1>
-<div id="scrollcreator"></div>
+<h1>Admin::Merchandising::Issues#index</h1>
+<table class="AdminTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Scroller Title</th>
+      <th>Number of Issues</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scrollers.each do |scroller| %>
+      <tr>
+        <td><%= scroller.id %></td>
+        <td><%= link_to scroller.title, admin_merchandising_comic_scroller_path(scroller) %></td>
+        <td><%= scroller.items.count %></td>
+        <td>
+          <%= link_to edit_admin_merchandising_comic_scroller_path(scroller), class: "btn-floating btn-large waves-effect waves-light red" do %>
+            <i class="large material-icons">edit</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @scrollers %>
+<div class="fixed-action-btn">
+  <%= link_to new_admin_merchandising_comic_scroller_path, class: "btn-floating btn-large red" do %>
+    <i class="large material-icons">add</i>
+  <% end %>
+</div>

@@ -25,12 +25,13 @@ Rails.application.routes.draw do
       namespace :issues do
         get "/", action: 'index', as: 'index'
         get "/search", action: 'search', as: 'search'
-        get "/scroller", action: 'scroller', as: 'scroller'
+        get "/scroller", action: 'scroller', as: 'scroller' # This is gonna go awayyyyy
       end
       namespace :tags do
         post "/", action: 'create', as: 'create'
         delete "/", action: 'destroy', as: 'destroy'
       end
+      resources :comic_scrollers
     end
   end
 

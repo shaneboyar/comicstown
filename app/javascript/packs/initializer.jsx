@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const scroll_creator_container = document.getElementById('scrollcreator');
   if(scroll_creator_container) {
-    ReactDOM.render(<ComicScrollerCreator />, scroll_creator_container)
+    const scroller = $('#scrollcreator').data('scroller');
+    const issues = $('#scrollcreator').data('issues');
+    ReactDOM.render(<ComicScrollerCreator issues={issues} scroller={scroller}/>, scroll_creator_container)
   }
 })

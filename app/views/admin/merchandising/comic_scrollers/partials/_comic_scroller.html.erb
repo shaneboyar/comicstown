@@ -1,0 +1,6 @@
+<% scroller ||= @scroller %>
+
+<div id="scrollcreator"
+     data-scroller='<%= scroller.to_json %>'
+     data-issues='<%= Issue.where(id: scroller.items.order(:position).pluck(:issue_id)).to_json %>'
+></div>
