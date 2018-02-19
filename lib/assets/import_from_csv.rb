@@ -22,32 +22,32 @@ csv.each do |row|
   if comic["writers"]
     writers_list = comic["writers"].split(", ")
     writers_list.each do |writer_name|
-      writer = Writer.find_or_create_by(name: writer_name )
-      issue.writers << writer
+      writer = Writer.find_or_create_by(name: writer_name)
+      issue.writers << writer unless issue.writers.include?(writer)
     end
   end
 
   if comic["inkers"]
     inkers_list = comic["inkers"].split(", ")
     inkers_list.each do |inker_name|
-      inker = Inker.find_or_create_by(name: inker_name )
-      issue.inkers << inker
+      inker = Inker.find_or_create_by(name: inker_name)
+      issue.inkers << inker unless issue.inkers.include?(inker)
     end
   end
 
   if comic["artists"]
     artists_list = comic["artists"].split(", ")
     artists_list.each do |artist_name|
-      artist = Artist.find_or_create_by(name: artist_name )
-      issue.artists << artist
+      artist = Artist.find_or_create_by(name: artist_name)
+      issue.artists << artist unless issue.artists.include?(artist)
     end
   end
 
   if comic["colorists"]
     colorists_list = comic["colorists"].split(", ")
     colorists_list.each do |colorist_name|
-      colorist = Colorist.find_or_create_by(name: colorist_name )
-      issue.colorists << colorist
+      colorist = Colorist.find_or_create_by(name: colorist_name)
+      issue.colorists << colorist unless issue.colorists.include?(colorist)
     end
   end
 end

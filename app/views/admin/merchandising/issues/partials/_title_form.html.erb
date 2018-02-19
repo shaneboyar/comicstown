@@ -1,0 +1,6 @@
+<%= form_with(model: issue, url: admin_merchandising_issue_path, class: 'AdminIssueEdit_TitleContainer') do |f| %>
+  <%= f.text_field :title, class: "AdminIssueEdit_Title", disabled: true %>
+  <%= f.button type: 'button', class: "AdminIssueEdit_TitleEditButton btn-floating btn-large waves-effect waves-light red", remote: true do %>
+    <i class="large material-icons">edit</i>
+  <% end %>
+<% end %>

@@ -36,16 +36,18 @@ gem 'jquery-rails'
 gem 'materialize-sass'
 
 # Add Pagination TODO: Will probably want to use this later
-gem 'will_paginate', '>= 3.1' # https://github.com/mislav/will_paginate
-# OR
-# gem 'kaminari' # https://github.com/kaminari/kaminari
+gem 'will_paginate-materialize'
+
+# Editing/Organizing comics
+gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 
 # SEO Gems
 gem 'meta-tags'
 gem 'sitemap_generator' # https://github.com/kjvarga/sitemap_generator
 # gem 'friendly_id' # TODO: https://github.com/norman/friendly_id
 
-# Chron Jobs
+# Jobs
+gem 'sidekiq'
 # gem 'whenever', require: false # https://github.com/javan/whenever
 
 group :development, :test do

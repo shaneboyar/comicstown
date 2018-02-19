@@ -1,0 +1,31 @@
+<h1>Admin::Merchandising::Issues#index</h1>
+<table class="AdminTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Issue Title</th>
+      <th>Series Title</th>
+      <th>Publisher Name</th>
+      <th>Tags</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.id %></td>
+        <td><%= link_to issue.title, admin_merchandising_issue_path(issue) %></td>
+        <td><%= issue.series.title %></td>
+        <td><%= issue.series.publisher.name %></td>
+        <td><%= issue.tag_list %></td>
+        <td>
+          <%= link_to edit_admin_merchandising_issue_path(issue), class: "btn-floating btn-large waves-effect waves-light red" do %>
+            <i class="large material-icons">mode_edit</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @issues %>
