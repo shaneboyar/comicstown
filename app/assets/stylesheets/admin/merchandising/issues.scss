@@ -1,0 +1,45 @@
+// Place all the styles related to the admin/merchandising/issues controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.AdminIssueShow_Container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.AdminIssueShow_Metadata {
+  position: relative;
+  width: 50%;
+}
+
+.AdminIssueShow_TagsContainer {
+  align-items: center;
+  display: flex;
+}
+
+.AdminIssueEdit_TitleContainer {
+  display: flex;
+  align-items: center;
+}
+
+.AdminIssueEdit_Title {
+  width: 60% !important;
+  height: 5rem !important;
+  font-size: 4.2rem !important;
+  line-height: 110% !important;
+  margin: 2.1rem 0 1.68rem 0 !important;
+}
+
+.AdminIssueEdit_TitleField {
+  width: 60% !important;
+  height: 5rem !important;
+  font-size: 4.2rem !important;
+  line-height: 110% !important;
+  margin: 2.1rem 0 1.68rem 0 !important;
+}
+
+.AdminIssueEdit_TitleEditButton {
+  margin-left: 20px;
+}
+

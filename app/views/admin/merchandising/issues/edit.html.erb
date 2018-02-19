@@ -1,0 +1,11 @@
+<div id="title-form"><%= render partial: 'admin/merchandising/issues/partials/title_form', locals: {issue: @issue} %></div>
+<div class="row">
+  <%= form_for(@issue, class: "col s12") do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'materialize-textarea' %>
+      </div>
+    </div>
+  <% end %>
+</div>

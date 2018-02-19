@@ -1,0 +1,26 @@
+@import 'materialize';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import './merchandising/issues';
+
+// Materialize Overrides
+nav {
+  background-color: blue;
+}
+
+.pagination a {
+  li {
+    color: black;
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      color: white;
+    }
+  }
+}
+
+.App_Container {
+  max-width: 1280px;
+  padding: 16px;
+}
