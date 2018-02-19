@@ -6,6 +6,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ComicSearcher from './ComicSearcher/main'
 import ComicScroller from './ComicScroller/main'
+import ComicScrollerCreator from './admin/ComicScrollerCreator/main'
 
 document.addEventListener('DOMContentLoaded', () => {
   const searcher_container = document.getElementById('comicsearcher');
@@ -18,5 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const type = scroller_container.getAttribute('type');
       ReactDOM.render(<ComicScroller type={type} />, scroller_container);
     }
+  }
+  const scroll_creator_container = document.getElementById('scrollcreator');
+  if(scroll_creator_container) {
+    ReactDOM.render(<ComicScrollerCreator />, scroll_creator_container)
   }
 })

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  if (!$('.chips').data('tags')) {return}
+
   var tags = String($('.chips').data('tags')).split(", ");
   var id = Number($('.chips').data('id'));
   var data = tags.map(tag => {return {tag}})
