@@ -25,6 +25,7 @@ class Issue < ApplicationRecord
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :inkers
   has_and_belongs_to_many :colorists
+  has_many :comic_scroller_items
   belongs_to :series
   validates :title, presence: true, uniqueness: { scope: :series,
     message: "Issue titles should be unique per series" }

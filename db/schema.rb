@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217145115) do
+ActiveRecord::Schema.define(version: 20180219135616) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(version: 20180217145115) do
   create_table "colorists_issues", id: false, force: :cascade do |t|
     t.integer "issue_id", null: false
     t.integer "colorist_id", null: false
+  end
+
+  create_table "comic_scroller_items", force: :cascade do |t|
+    t.integer "comic_scroller_id"
+    t.integer "issue_id"
+    t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comic_scroller_id"], name: "index_comic_scroller_items_on_comic_scroller_id"
+    t.index ["issue_id"], name: "index_comic_scroller_items_on_issue_id"
+  end
+
+  create_table "comic_scrollers", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inkers", force: :cascade do |t|
