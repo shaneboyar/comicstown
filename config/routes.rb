@@ -31,7 +31,9 @@ Rails.application.routes.draw do
         post "/", action: 'create', as: 'create'
         delete "/", action: 'destroy', as: 'destroy'
       end
-      resources :comic_scrollers
+      resources :comic_scrollers do
+        resources :comic_scroller_items
+      end
     end
   end
 

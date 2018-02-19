@@ -16,8 +16,8 @@ class ComicScrollerCreator extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     $.ajax({
-      type: "PUT",
-      url: `/admin/merchandising/comic_scrollers/${scrollerId}`,
+      type: "POST",
+      url: `/api/v1/comic_scrollers/${scrollerId}/comic_scroller_items`,
       data: {
         issue_id: issue.id
       },
@@ -40,8 +40,8 @@ class ComicScrollerCreator extends React.Component {
         <h1>{scroller.title}</h1>
         <ComicSearcher issueSize='small' scrollerId={scroller.id} onClick={this.onClick} />
         <DraggableComics scrollerId={scroller.id} issues={issues} />
-        <button class="btn waves-effect waves-light">Save Order
-          <i class="material-icons right">archive</i>
+        <button className="btn waves-effect waves-light">Save Order
+          <i className="material-icons right">archive</i>
         </button>
       </div>
     );
