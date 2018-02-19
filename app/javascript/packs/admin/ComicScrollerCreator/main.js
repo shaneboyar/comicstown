@@ -33,13 +33,30 @@ class ComicScrollerCreator extends React.Component {
     });
   }
 
+  deleteComicScrollerItem = (id) => {
+    $.ajax({
+      type: "DELETE",
+      url: `/api/v1/comic_scrollers/${this.state.scroller.id}/comic_scroller_items/${id}`,
+      success: (data) => {
+        const nextIssues = this.state.issues.filter(issue => issue.id !== data.id);
+        this.setState({
+          issues: nextIssues
+        })
+      },
+      error: (data) => {
+        alert(data.responseText);
+        return false
+      }
+    });
+  }
+
   render() {
     const { scroller, issues } = this.state;
     return(
       <div>
         <h1>{scroller.title}</h1>
         <ComicSearcher issueSize='small' scrollerId={scroller.id} onClick={this.onClick} />
-        <DraggableComics scrollerId={scroller.id} issues={issues} />
+        <DraggableComics scrollerId={scroller.id} issues={issues} afterDrag={(id) => this.deleteComicScrollerItem(id)} />
         <button className="btn waves-effect waves-light">Save Order
           <i className="material-icons right">archive</i>
         </button>

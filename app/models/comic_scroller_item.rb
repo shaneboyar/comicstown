@@ -19,8 +19,8 @@ class ComicScrollerItem < ApplicationRecord
   belongs_to :comic_scroller
   belongs_to :issue
 
-  validates :position, presence: true, uniqueness: { scope: :comic_scroller,
-    message: "Positions must be unique within a scroller" }
+  # validates :position, presence: true, uniqueness: { scope: :comic_scroller,
+  #   message: "Positions must be unique within a scroller" }
   validates :issue_id, presence: true, uniqueness: { scope: :comic_scroller,
     message: "This issue already exists in this scroller" }
 end
