@@ -1,6 +1,8 @@
 <% scroller ||= @scroller %>
+<% items = scroller.items.joins("INNER JOIN issues on issues.id = comic_scroller_items.issue_id").select("comic_scroller_items.id", "issues.id as issue_id", "issues.external_image_url").order("comic_scroller_items.position asc") %>
+
 
 <div id="scrollcreator"
      data-scroller='<%= scroller.to_json %>'
-     data-issues='<%= Issue.includes(:comic_scroller_items).where(id: scroller.items.pluck(:issue_id)).order('comic_scroller_items.position').to_json %>'
+     data-items='<%= items.to_json %>'
 ></div>

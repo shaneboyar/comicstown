@@ -8,7 +8,7 @@ class ComicScrollerCreator extends React.Component {
     super(props);
     this.state = {
       scroller: this.props.scroller,
-      issues: [...this.props.issues],
+      items: [...this.props.items],
       order_updated: false
     }
   }
@@ -24,7 +24,7 @@ class ComicScrollerCreator extends React.Component {
       },
       success: (data) => {
         this.setState({
-          issues: [...this.state.issues, data]
+          items: [...this.state.items, data]
         })
       },
       error: (data) => {
@@ -39,9 +39,9 @@ class ComicScrollerCreator extends React.Component {
       type: "DELETE",
       url: `/api/v1/comic_scrollers/${this.state.scroller.id}/comic_scroller_items/${id}`,
       success: (data) => {
-        const nextIssues = this.state.issues.filter(issue => issue.id !== data.id);
+        const nextItems = this.state.items.filter(item => item.id !== data.id);
         this.setState({
-          issues: nextIssues
+          items: nextItems
         })
       },
       error: (data) => {
@@ -51,38 +51,39 @@ class ComicScrollerCreator extends React.Component {
     });
   }
 
-  onReorder = (issues) => {
+  onReorder = (items) => {
     this.setState({
-      issues,
+      items,
       order_updated: true
     });
   }
 
   onSave = () => {
-    for ([index, issue] of this.state.issues.entries()) {
-      $.ajax({
-        type: "PATCH",
-        url: `/api/v1/comic_scrollers/${this.state.scroller.id}/comic_scroller_items/${issue.id}`, // Cant I find a way to use comic_scroller_item_id??
-        data: {
-          newIndex: index
-        }
-      });
+    let data = []
+    for ([index, item] of this.state.items.entries()) {
+      data.push({item_id: item.id, new_index: index});
     }
+    console.log(data);
+    $.ajax({
+      type: "PATCH",
+      url: `/api/v1/comic_scrollers/${this.state.scroller.id}`,
+      data: {updates: data}
+    });
     this.setState({
       order_updated: false
     })
   }
 
   render() {
-    const { scroller, issues } = this.state;
+    const { scroller, items } = this.state;
     return(
       <div>
         <h1>{scroller.title}</h1>
         <ComicSearcher issueSize='small' scrollerId={scroller.id} onClick={this.onClick} />
         <DraggableComics
           scrollerId={scroller.id}
-          issues={issues}
-          onReorder={(issues) => this.onReorder(issues)}
+          issues={items}
+          onReorder={(items) => this.onReorder(items)}
           afterDrag={(id) => this.deleteComicScrollerItem(id)} />
         <button onClick={this.onSave}
                 disabled={!this.state.order_updated}

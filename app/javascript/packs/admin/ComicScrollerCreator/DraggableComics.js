@@ -11,8 +11,6 @@ class DragabbleComics extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props.issues);
-    console.log(nextProps.issues);
     if (this.props.issues !== nextProps.issues.length) {
       this.setState({
         issues: nextProps.issues
@@ -105,7 +103,7 @@ const Issue = ({issue, index}) => (
             provided.draggableProps.style
           )}
         >
-          <a href={`/issues/${issue.id}`}>
+          <a href={`/issues/${issue.issue_id}`}>
             <div className="IssueIndex_SearchResult">
               <img src={issue.external_image_url} className="AdminComicScrollers_IssueImages" />
             </div>
