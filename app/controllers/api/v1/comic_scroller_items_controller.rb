@@ -22,7 +22,7 @@ module Api
         @item = ComicScrollerItem.find(params[:id])
         respond_to do |format|
           if @item.destroy
-            format.json { render json: ComicScrollerItem.find(params[:id]).issue, status: 200 }
+            format.json { render json: @item, status: 200 }
           else
             format.json { render json: scroller.errors.full_messages, status: :unprocessable_entity }
           end
