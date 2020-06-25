@@ -148,7 +148,7 @@ GEM
     orm_adapter (0.5.0)
     public_suffix (3.0.1)
     puma (3.11.2)
-    rack (2.0.4)
+    rack (2.2.3)
     rack-cors (0.4.1)
     rack-protection (2.0.1)
       rack
