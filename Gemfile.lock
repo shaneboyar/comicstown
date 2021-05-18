@@ -147,7 +147,8 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     public_suffix (3.0.1)
-    puma (3.11.2)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.0.4)
     rack-cors (0.4.1)
     rack-protection (2.0.1)
@@ -278,7 +279,7 @@ DEPENDENCIES
   materialize-sass
   meta-tags
   omniauth-facebook
-  puma (~> 3.7)
+  puma (~> 4.3)
   rack-cors
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
